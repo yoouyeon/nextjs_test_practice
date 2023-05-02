@@ -1,12 +1,14 @@
 import { useRouter } from "next/router";
 import { Button } from "@/components/atoms/Button";
+import { logout } from "@/utils/logout";
 
 export default function Home() {
   const router = useRouter();
   // 로그인 여부에 따라 다른 버튼 노출
   const id: number = 1;
-  const logoutHandler = () => {
-    console.log("logoutHandler");
+  const logoutHandler = async () => {
+    await logout();
+    router.push("/login");
   };
   return (
     <div>

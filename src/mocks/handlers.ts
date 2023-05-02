@@ -14,14 +14,12 @@ export const handlers = [
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      // 쿠키에 토큰 설정해주기
-      return res(ctx.status(200));
+      return res(ctx.status(200), ctx.cookie(AUTHTOKENKEY, user.token));
     }
     return res(ctx.status(400));
   }),
   rest.post("/logout", (req, res, ctx) => {
-    // 요청 토큰 받아오기
-    const token = "";
+    const token = req.cookies[AUTHTOKENKEY];
     const user = userData.find((user) => user.token === token);
     clearCookie();
     if (!user) {
@@ -30,8 +28,7 @@ export const handlers = [
     return res(ctx.status(200));
   }),
   rest.get("/user", (req, res, ctx) => {
-    // 요청 토큰 받아오기
-    const token = "";
+    const token = req.cookies[AUTHTOKENKEY];
     const user = userData.find((user) => user.token === token);
     if (!user) {
       return res(ctx.status(400));
