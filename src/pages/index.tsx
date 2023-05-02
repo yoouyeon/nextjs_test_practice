@@ -1,11 +1,15 @@
 import { useRouter } from "next/router";
 import { Button } from "@/components/atoms/Button";
 import { logout } from "@/utils/logout";
+import { useUser } from "@/utils/hooks/useUser";
 
 export default function Home() {
   const router = useRouter();
-  // 로그인 여부에 따라 다른 버튼 노출
-  const id: number = 1;
+  const { user, error, loading } = useUser();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   const logoutHandler = async () => {
     await logout();
     router.push("/login");
@@ -13,25 +17,30 @@ export default function Home() {
   return (
     <div>
       This is Test Sample Todo Home Page
-      <Button
-        variant="contained"
-        onClick={() => {
-          router.push("/login");
-        }}
-      >
-        Login
-      </Button>
-      <Button variant="contained" onClick={logoutHandler}>
-        Logout
-      </Button>
-      <Button
-        variant="contained"
-        onClick={() => {
-          router.push(`/todo/${id}`);
-        }}
-      >
-        Go To My Todo
-      </Button>
+      {user && !error ? (
+        <>
+          <Button variant="contained" onClick={logoutHandler}>
+            Logout
+          </Button>
+          <Button
+            variant="contained"
+            onClick={() => {
+              router.push(`/todo/${user.id}`);
+            }}
+          >
+            Go To My Todo
+          </Button>
+        </>
+      ) : (
+        <Button
+          variant="contained"
+          onClick={() => {
+            router.push("/login");
+          }}
+        >
+          Login
+        </Button>
+      )}
     </div>
   );
 }
