@@ -10,6 +10,7 @@ export const TextField = (props: TextFieldProps) => {
   const { label, icon } = props;
   return (
     <M_TextField
+      name={label}
       label={label}
       variant="outlined"
       InputProps={

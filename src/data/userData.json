@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "admin",
+    "username": "admin",
+    "password": "admin",
+    "token": "4e2fab1f-f1fb-4945-8c86-e2b5a00505ef",
+    "isAdmin": true
+  },
+  {
+    "id": 2,
+    "name": "compose coffee",
+    "username": "compose",
+    "password": "qwe123!@#",
+    "token": "b1677067-06a2-4871-a6ae-efac0711dc00",
+    "isAdmin": false
+  },
+  {
+    "id": 3,
+    "name": "mega coffee",
+    "username": "mega",
+    "password": "qwe123!@#",
+    "token": "23edc660-78a8-43bf-98ee-83e78b84c8f9",
+    "isAdmin": false
+  }
+]
