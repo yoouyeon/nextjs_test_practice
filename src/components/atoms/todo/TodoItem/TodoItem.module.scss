@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  height: fit-content;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1.5px solid #6190e8;
+  border-radius: 10px;
+  background-color: #ffffff;
+}
+
+.checkbox {
+  margin-right: 10px;
+}
+
+.text {
+  flex: 1;
+  padding: 0 10px;
+  text-align: left;
+  word-break: break-all;
+  word-wrap: break-word;
+}

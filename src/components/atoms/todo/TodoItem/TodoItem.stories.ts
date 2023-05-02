@@ -11,10 +11,18 @@ export default meta;
 
 type Story = StoryObj<typeof TodoItem>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     id: "1",
     todo: "Todo Item",
     completed: false,
+  },
+};
+
+export const Completed: Story = {
+  args: {
+    id: "1",
+    todo: "Todo Item",
+    completed: true,
   },
 };
