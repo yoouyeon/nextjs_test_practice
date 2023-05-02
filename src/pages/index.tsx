@@ -25,7 +25,7 @@ export default function Home() {
           <Button
             variant="contained"
             onClick={() => {
-              router.push(`/todo/${user.id}`);
+              router.push("/todo");
             }}
           >
             Go To My Todo
