@@ -1,11 +1,24 @@
-.wrapper {
+@import "../../../styles//globals.scss";
+
+@mixin wrapper-default {
   display: flex;
   height: fit-content;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1.5px solid #6190e8;
-  border-radius: 10px;
-  background-color: #ffffff;
+  min-height: 80px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 25px;
+  border: $border-weight solid $border-color;
+  border-radius: $border-radius;
+}
+
+.wrapper {
+  @include wrapper-default;
+  background-color: $pale-orange;
+}
+
+.checked {
+  @include wrapper-default;
+  background-color: $light-orange;
 }
 
 .checkbox {

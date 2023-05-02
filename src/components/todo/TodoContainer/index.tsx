@@ -24,7 +24,7 @@ export default function TodoContainer() {
   if (!todos) return <div>error</div>;
 
   return (
-    <div className={styles.container}>
+    <ul className={styles.container}>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}
@@ -33,6 +33,6 @@ export default function TodoContainer() {
           completed={todo.completed}
         />
       ))}
-    </div>
+    </ul>
   );
 }
