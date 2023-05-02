@@ -1,6 +1,6 @@
 import { getTodos } from "@/utils/api/todo";
 import { todoType } from "@/types/todo";
-import TodoContainer from "@/components/atoms/todo/TodoContainer";
+import TodoContainer from "@/components/todo/TodoContainer";
 
 // function TodoPage(props: { todos: todoType[] | null }) {
 function TodoPage() {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import TodoItem from "../TodoItem";
 import styles from "./TodoContainer.module.scss";
 import { todoType } from "@/types/todo";
-import { getTodos } from "../../../../utils/api/todo";
+import { getTodos } from "../../../utils/api/todo";
 
 // export default function TodoContainer(props: { todos: todoType[] }) {
 export default function TodoContainer() {
