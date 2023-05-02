@@ -1,4 +1,16 @@
 import type { Preview } from "@storybook/react";
+import { initialize, mswDecorator } from "msw-storybook-addon";
+
+// Initialize MSW
+initialize();
+
+// Provide the MSW addon decorator globally
+export const decorators = [mswDecorator];
+
+if (typeof global.process === "undefined") {
+  const { worker } = require("../src/mocks/browser");
+  worker.start();
+}
 
 const preview: Preview = {
   parameters: {
