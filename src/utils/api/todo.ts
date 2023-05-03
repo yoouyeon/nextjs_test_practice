@@ -16,9 +16,9 @@ export const getTodos = async (): Promise<todoType[] | null> => {
   }
 };
 
-export const addTodo = async (todo: string): Promise<boolean> => {
+export const addTodo = async (todo: string): Promise<todoType[]> => {
   try {
-    await axios.post(
+    const res = await axios.post(
       "/todos",
       {
         todo,
@@ -28,13 +28,13 @@ export const addTodo = async (todo: string): Promise<boolean> => {
         withCredentials: true,
       }
     );
-    return true;
+    return res.data;
   } catch (error: AxiosError | unknown) {
     if (axios.isAxiosError(error)) {
-      return false;
+      return [];
     }
     console.log(error);
-    return false;
+    return [];
   }
 };
 

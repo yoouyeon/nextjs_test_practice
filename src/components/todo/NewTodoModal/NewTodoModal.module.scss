@@ -1,0 +1,13 @@
+@import "../../../styles/globals.scss";
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 630px;
+  min-height: 340px;
+  background-color: $background-color;
+  border: $border-weight solid $border-color;
+  border-radius: $border-radius;
+}
