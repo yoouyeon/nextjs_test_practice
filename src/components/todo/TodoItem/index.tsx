@@ -2,15 +2,31 @@ import { Checkbox, IconButton } from "@mui/material";
 import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
 import CircleIcon from "@mui/icons-material/Circle";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useSetRecoilState } from "recoil";
 import classNames from "classnames";
 import { todoType } from "@/types/todo";
 import styles from "./TodoItem.module.scss";
+import { todoListState } from "../../../utils/atoms/todoAtom";
+import { toggleTodo, deleteTodo } from "../../../utils/api/todo";
 
 export default function TodoItem(props: todoType) {
   const { id, todo, completed } = props;
-  function checkHandler() {
-    console.log("체크");
+  const setTodos = useSetRecoilState(todoListState);
+
+  async function checkHandler() {
+    const res = await toggleTodo(id);
+    if (res) {
+      setTodos(res);
+    }
   }
+
+  async function deleteHandler() {
+    const res = await deleteTodo(id);
+    if (res) {
+      setTodos(res);
+    }
+  }
+
   return (
     <li
       id={id}
@@ -24,7 +40,7 @@ export default function TodoItem(props: todoType) {
         onChange={checkHandler}
       />
       <div className={styles.text}>{todo}</div>
-      <IconButton aria-label="delete" className={styles.delete}>
+      <IconButton className={styles.delete} onClick={deleteHandler}>
         <DeleteIcon />
       </IconButton>
     </li>

@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { todoType } from "@/types/todo";
+import { v1 } from "uuid";
 
 export const getTodos = async (): Promise<todoType[] | null> => {
   try {
@@ -16,12 +17,13 @@ export const getTodos = async (): Promise<todoType[] | null> => {
   }
 };
 
-export const addTodo = async (todo: string): Promise<todoType[]> => {
+export const addTodo = async (todo: string): Promise<todoType[] | null> => {
   try {
     const res = await axios.post(
       "/todos",
       {
         todo,
+        id: v1(),
         completed: false,
       },
       {
@@ -31,24 +33,39 @@ export const addTodo = async (todo: string): Promise<todoType[]> => {
     return res.data;
   } catch (error: AxiosError | unknown) {
     if (axios.isAxiosError(error)) {
-      return [];
+      return null;
     }
     console.log(error);
-    return [];
+    return null;
   }
 };
 
-export const toggleTodo = async (id: string): Promise<boolean> => {
+export const toggleTodo = async (id: string): Promise<todoType[] | null> => {
   try {
-    await axios.put(`/todos/${id}`, {
+    const res = await axios.put(`/todos/${id}`, {
       withCredentials: true,
     });
-    return true;
+    return res.data;
   } catch (error: AxiosError | unknown) {
     if (axios.isAxiosError(error)) {
-      return false;
+      return null;
     }
     console.log(error);
-    return false;
+    return null;
+  }
+};
+
+export const deleteTodo = async (id: string): Promise<todoType[] | null> => {
+  try {
+    const res = await axios.delete(`/todos/${id}`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error: AxiosError | unknown) {
+    if (axios.isAxiosError(error)) {
+      return null;
+    }
+    console.log(error);
+    return null;
   }
 };

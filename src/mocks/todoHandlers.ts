@@ -55,6 +55,17 @@ export const todoHandlers = [
     const id = req.params.id;
     const index = todos.findIndex((todo) => todo.id === id);
     todos[index].completed = !todos[index].completed;
-    return res(ctx.status(200));
+    return res(ctx.status(200), ctx.json(todos));
+  }),
+  // 할일 삭제
+  rest.delete(`/todos/:id`, async (req, res, ctx) => {
+    const token = req.cookies[AUTHTOKENKEY];
+    const user = userData.find((user) => user.token === token);
+    if (!user) {
+      return res(ctx.status(400));
+    }
+    const id = req.params.id;
+    todos = todos.filter((todo) => todo.id !== id);
+    return res(ctx.status(200), ctx.json(todos));
   }),
 ];

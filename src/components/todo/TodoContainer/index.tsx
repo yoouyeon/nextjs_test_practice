@@ -5,7 +5,7 @@ import TodoItem from "../TodoItem";
 import styles from "./TodoContainer.module.scss";
 import { todoType } from "@/types/todo";
 import { getTodos } from "../../../utils/api/todo";
-import { todoListState } from "@/utils/atoms/todoAtom";
+import { todoListState } from "../../../utils/atoms/todoAtom";
 
 // export default function TodoContainer(props: { todos: todoType[] }) {
 export default function TodoContainer() {
