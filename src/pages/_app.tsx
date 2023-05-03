@@ -1,6 +1,8 @@
 import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "@mui/material";
+import theme from "@/styles/theme";
 
 if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
   import("../mocks");
@@ -8,8 +10,10 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <Component {...pageProps} />
-    </RecoilRoot>
+    <ThemeProvider theme={theme}>
+      <RecoilRoot>
+        <Component {...pageProps} />
+      </RecoilRoot>
+    </ThemeProvider>
   );
 }
