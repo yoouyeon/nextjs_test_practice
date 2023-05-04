@@ -30,7 +30,6 @@
     "react-dom": "18.2.0",
     "recoil": "^0.7.7",
     "sass": "^1.62.1",
-    "typescript": "5.0.4",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -46,7 +45,8 @@
     "msw": "^1.2.1",
     "msw-storybook-addon": "^1.8.0",
     "sb": "^7.0.7",
-    "storybook": "^7.0.7"
+    "storybook": "^7.0.7",
+    "typescript": "^5.0.4"
   },
   "msw": {
     "workerDirectory": ".storybook/public"
