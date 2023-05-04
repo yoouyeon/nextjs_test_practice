@@ -11,3 +11,9 @@ npm run dev
 ```bash
 npm run storybook
 ```
+
+## 📍 Cypress 실행
+
+```bash
+npm run cypress
+```
