@@ -6,8 +6,8 @@ import { useSetRecoilState } from "recoil";
 import classNames from "classnames";
 import { todoType } from "@/types/todo";
 import styles from "./TodoItem.module.scss";
-import { todoListState } from "../../../utils/atoms/todoAtom";
-import { toggleTodo, deleteTodo } from "../../../utils/api/todo";
+import { todoListState } from "@/utils/atoms/todoAtom";
+import { toggleTodo, deleteTodo } from "@/utils/api/todo";
 
 export default function TodoItem(props: todoType) {
   const { id, todo, completed } = props;

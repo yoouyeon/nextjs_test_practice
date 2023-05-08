@@ -1,8 +1,8 @@
 import { useSetRecoilState } from "recoil";
 import styles from "./NewTodoModal.module.scss";
-import { TextField, Button } from "../../atoms";
-import { addTodo } from "../../../utils/api/todo";
-import { todoListState } from "../../../utils/atoms/todoAtom";
+import { TextField, Button } from "@/components/atoms";
+import { addTodo } from "@/utils/api/todo";
+import { todoListState } from "@/utils/atoms/todoAtom";
 
 export default function NewTodoModal() {
   const setTodos = useSetRecoilState(todoListState);
